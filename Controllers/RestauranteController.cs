@@ -2,11 +2,24 @@
 
 namespace ActividadPracticaI_UnidadII.Controllers
 {
+    [ApiController]
+    [Route("api/propina")]
     public class RestauranteController : Controller
     {
-        public IActionResult Index()
+        [HttpGet("calcular")]
+        public IActionResult Calcular(decimal monto, decimal porcentaje)
         {
-            return View();
+            decimal propina = monto * porcentaje / 100;
+
+            decimal total = monto + propina;
+
+            return Ok(new
+            {
+                montoOriginal = monto,
+                porcentajePropina = porcentaje,
+                propina,
+                totalPagar = total
+            });
         }
     }
 }
