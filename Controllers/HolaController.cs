@@ -2,11 +2,17 @@
 
 namespace ActividadPracticaI_UnidadII.Controllers
 {
-    public class HolaController : Controller
+    [ApiController]
+    [Route("api/hola")]
+    public class HolaController : ControllerBase
     {
-        public IActionResult Index()
+        [HttpGet("saludo")]
+        public IActionResult Saludo(string nombre)
         {
-            return View();
+            return Ok(new
+            {
+                mensaje = $"Bienvenido {nombre}"
+            });
         }
     }
 }
