@@ -4,7 +4,7 @@ namespace ActividadPracticaI_UnidadII.Controllers
 {
     [ApiController]
     [Route("api/hola")]
-    public class HolaController : ControllerBase
+    public class HolaController : Controller
     {
         [HttpGet("saludo")]
         public IActionResult Saludo(string nombre)
