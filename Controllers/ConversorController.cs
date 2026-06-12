@@ -2,11 +2,22 @@
 
 namespace ActividadPracticaI_UnidadII.Controllers
 {
+    [ApiController]
+    [Route("api/tiempo")]
     public class ConversorController : Controller
     {
-        public IActionResult Index()
+        [HttpGet("formatear")]
+        public IActionResult Formatear(int segundos)
         {
-            return View();
+            TimeSpan tiempo = TimeSpan.FromSeconds(segundos);
+
+            return Ok(new
+            {
+                horas = tiempo.Hours,
+                minutos = tiempo.Minutes,
+                segundosRestantes = tiempo.Seconds,
+                formatoCompleto = tiempo.ToString(@"hh\:mm\:ss")
+            });
         }
     }
 }
